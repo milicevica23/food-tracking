@@ -1,0 +1,1 @@
+FROM food_table_ingredients_flat
