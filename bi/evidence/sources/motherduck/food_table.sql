@@ -1,1 +1,1 @@
-from main.food_table
+from main.food_table_view

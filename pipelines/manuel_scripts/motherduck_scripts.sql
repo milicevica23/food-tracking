@@ -1,6 +1,9 @@
 
 INSTALL gsheets FROM community;
 LOAD gsheets;
+INSTALL crypto FROM community;;
+LOAD crypto;
+
 
 CREATE OR REPLACE SECRET (
     TYPE gsheet, 
@@ -18,6 +21,7 @@ SELECT
 	t."Picture of your food" as picture_link,
 	t."Food name" as food_name,
     t."Email address" as user_email,
+    sha256(t."Email address") as user_hash_id,
     CAST(t."How much impact had your meal on your mental/physical state?" AS INT) AS state_point, 
 	CAST(t."How sleepy or tired do you feel after your meal?" AS INT) as sleep_point,
 	CAST(t."How is your stomach after the meel?" AS INT) as stomach_point,
@@ -33,12 +37,14 @@ ATTACH OR REPLACE 'md:food_tracker_db' as food_tracker_db;
 USE food_tracker_db;
 
 CREATE OR REPLACE TABLE food_table as SELECT * from memory.food_tracker_view;
+CREATE OR REPLACE VIEW food_table_view as SELECT * EXCLUDE(user_email) from food_table;
 
 FROM food_table;
 
 CREATE OR REPLACE TABLE food_table_ingredients_flat AS
 SELECT
-    t.user_email,
+    t.user_hash_id,
+    t.insert_timestamp,
     t.state_point,
 	t.sleep_point,
 	t.stomach_point,
@@ -50,7 +56,8 @@ WHERE unnest <> '';
 
 CREATE OR REPLACE TABLE food_table_allergens_flat AS
 SELECT
-    t.user_email,
+    t.user_hash_id,
+    t.insert_timestamp,
     t.state_point,
 	t.sleep_point,
 	t.stomach_point,
