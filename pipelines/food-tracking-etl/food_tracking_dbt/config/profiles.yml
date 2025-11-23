@@ -1,0 +1,18 @@
+food_tracking_dbt:
+  outputs:
+    dev:
+      type: duckdb
+      path: "md:food_tracking_db"
+      extensions:
+        - name: gsheets
+          repo: community
+      secrets:
+        - type: gsheet
+          PROVIDER: key_file
+          FILEPATH: "{{ env_var('SV_FILE_PATH') }}"
+    prod:
+      type: duckdb
+      path: prod.duckdb
+      threads: 4
+
+  target: dev
