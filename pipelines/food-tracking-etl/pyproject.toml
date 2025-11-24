@@ -1,0 +1,11 @@
+
+[tool.dg]
+directory_type = "project"
+
+[tool.dg.project]
+root_module = "food_tracking_dagster"
+registry_modules = [
+    "food_tracking_dagster.components.*",
+]
+
+
