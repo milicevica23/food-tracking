@@ -2,5 +2,5 @@ type: dagster_dbt.DbtProjectComponent
 
 attributes:
   project:
-    project_dir: '../../../food_tracking_dbt'
-    profiles_dir: 'config/'
+    project_dir: '{{ context.project_root }}/src/food_tracking_dbt'
+    profiles_dir: '{{ context.project_root }}/src/food_tracking_dbt/config'
