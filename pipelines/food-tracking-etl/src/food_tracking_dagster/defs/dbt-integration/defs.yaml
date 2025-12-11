@@ -1,0 +1,6 @@
+type: dagster_dbt.DbtProjectComponent
+
+attributes:
+  project:
+    project_dir: '../../../food_tracking_dbt'
+    profiles_dir: 'config/'
