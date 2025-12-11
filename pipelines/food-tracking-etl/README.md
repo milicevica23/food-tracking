@@ -1,40 +1,42 @@
-# food_tracking_dagster
+# Food Tracking ETL
 
-## Getting started
+Dagster-based ETL pipeline for the food tracking project, integrating dbt for data transformations.
 
-### Installing dependencies
+## Getting Started
 
-**Option 1: uv**
+### Installing Dependencies
 
-Ensure [`uv`](https://docs.astral.sh/uv/) is installed following their [official documentation](https://docs.astral.sh/uv/getting-started/installation/).
+**Option 1: uv (Recommended)**
 
-Create a virtual environment, and install the required dependencies using _sync_:
+Ensure [`uv`](https://docs.astral.sh/uv/) is installed by following the [official documentation](https://docs.astral.sh/uv/getting-started/installation/).
+
+Create a virtual environment and install the required dependencies using sync:
 
 ```bash
 uv sync
-```
-
-Then, activate the virtual environment:
-
-| OS | Command |
-| --- | --- |
-| MacOS | ```source .venv/bin/activate``` |
-| Windows | ```.venv\Scripts\activate``` |
-
-**Option 2: pip**
-
-Install the python dependencies with [pip](https://pypi.org/project/pip/):
-
-```bash
-python3 -m venv .venv
 ```
 
 Then activate the virtual environment:
 
 | OS | Command |
 | --- | --- |
-| MacOS | ```source .venv/bin/activate``` |
-| Windows | ```.venv\Scripts\activate``` |
+| macOS/Linux | `source .venv/bin/activate` |
+| Windows | `.venv\Scripts\activate` |
+
+**Option 2: pip**
+
+Create a virtual environment:
+
+```bash
+python3 -m venv .venv
+```
+
+Activate the virtual environment:
+
+| OS | Command |
+| --- | --- |
+| macOS/Linux | `source .venv/bin/activate` |
+| Windows | `.venv\Scripts\activate` |
 
 Install the required dependencies:
 
@@ -50,11 +52,9 @@ Start the Dagster UI web server:
 dg dev
 ```
 
-Open http://localhost:3000 in your browser to see the project.
+Open http://localhost:3000 in your browser to access the Dagster UI.
 
-## Learn more
-
-To learn more about this template and Dagster in general:
+## Learn More
 
 - [Dagster Documentation](https://docs.dagster.io/)
 - [Dagster University](https://courses.dagster.io/)
